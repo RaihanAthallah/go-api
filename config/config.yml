@@ -1,6 +1,6 @@
 database:
     driver: postgres
-    host: localhost
+    host: database-1.cuoa8131ddnt.ap-southeast-1.rds.amazonaws.com
     port: 5432
     user: postgres
     password: kalahkan123
