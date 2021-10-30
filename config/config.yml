@@ -17,8 +17,8 @@ sentry:
     isactive: true
     dsn: https://xxx@sentry.medkomtek.com/22
 server:
-    port: 8085
+    port: 8080
     issuer: universitasbakrie
     env: development
-    baseurl: http://localhost:8086/
-    redirectpage: http://localhost:8086/
+    baseurl: http://localhost:8081/
+    redirectpage: http://localhost:8081/
