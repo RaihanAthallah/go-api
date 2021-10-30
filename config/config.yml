@@ -1,0 +1,24 @@
+database:
+    driver: postgres
+    host: localhost
+    port: 5432
+    user: postgres
+    password: kalahkan123
+    dbname: postgres
+    sslmode: disable
+    schema: 
+        listclinics: listclinics
+redis:
+    host: localhost
+    port: 6378
+    user: ""
+    password: ""
+sentry:
+    isactive: true
+    dsn: https://xxx@sentry.medkomtek.com/22
+server:
+    port: 8085
+    issuer: universitasbakrie
+    env: development
+    baseurl: http://localhost:8086/
+    redirectpage: http://localhost:8086/

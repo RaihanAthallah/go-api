@@ -1,0 +1,56 @@
+version: '3.7'
+services:
+  app:
+    container_name: go_listofclinics_api
+    image: go_listofclinics_api
+    build:
+      context: .
+      dockerfile: ./docker/development/Dockerfile
+      args:
+          - repo_user=eldhoral
+          - repo_token=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
+          - repo_url=github.com
+          - repo_organization=hayvee-website-development
+          - app_name=api_listclinics_hayvee
+    volumes: 
+      - .:/app
+    ports: 
+      - 8080:8080
+    networks: 
+      - backend
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    container_name: go_listofclinics_database
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5431:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=default
+      - POSTGRES_PASSWORD=secret
+    networks:
+      - backend
+
+  redis:
+      image: redis
+      restart: always
+      ports:
+        - 6379:6379
+      volumes:
+        - $PWD/redis:/data
+      command: redis-server --appendonly yes
+      networks:
+        - backend
+
+volumes:
+  pkg:
+    driver: local
+  db-data:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge
