@@ -17,7 +17,7 @@ services:
     ports: 
       - 8080:8080
     extra_hosts:
-      - "host.docker.internal:172.17.0.1"
+      - "host.docker.internal:103.214.112.202"
     networks: 
       - backend
     depends_on:
