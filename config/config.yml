@@ -1,9 +1,9 @@
 database:
     driver: postgres
     host: host.docker.internal
-    port: 5432
+    port: 5434
     user: postgres
-    password: 123
+    password: Kalahkan
     dbname: hayvee
     sslmode: disable
     schema: 

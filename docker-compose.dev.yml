@@ -17,7 +17,7 @@ services:
     ports: 
       - 8080:8080
     extra_hosts:
-      - "host.docker.internal:103.214.112.202"
+      - "host.docker.internal:host-gateway"
     networks: 
       - backend
     depends_on:
@@ -28,7 +28,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - 5431:5432
+      - 5431:5434
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=default
