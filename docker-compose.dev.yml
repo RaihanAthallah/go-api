@@ -8,7 +8,7 @@ services:
       dockerfile: ./docker/development/Dockerfile
       args:
           - repo_user=eldhoral
-          - repo_token=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
+          - repo_token=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
           - repo_url=github.com
           - repo_organization=hayvee-website-development
           - app_name=api_listclinics_hayvee
@@ -17,7 +17,7 @@ services:
     ports: 
       - 8080:8080
     extra_hosts:
-      - "host.docker.internal:10.237.21.43"
+      - "host.docker.internal:103.214.112.202"
     networks: 
       - backend
     depends_on:
