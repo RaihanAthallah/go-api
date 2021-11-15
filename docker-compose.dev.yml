@@ -16,6 +16,8 @@ services:
       - .:/app
     ports: 
       - 8080:8080
+    extra_hosts:
+      - "host.docker.internal:10.237.21.43"
     networks: 
       - backend
     depends_on:
@@ -33,17 +35,6 @@ services:
       - POSTGRES_PASSWORD=secret
     networks:
       - backend
-
-  redis:
-      image: redis
-      restart: always
-      ports:
-        - 6379:6379
-      volumes:
-        - $PWD/redis:/data
-      command: redis-server --appendonly yes
-      networks:
-        - backend
 
 volumes:
   pkg:

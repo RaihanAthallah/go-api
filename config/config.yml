@@ -1,24 +1,19 @@
 database:
     driver: postgres
-    host: database-1.cuoa8131ddnt.ap-southeast-1.rds.amazonaws.com
+    host: host.docker.internal
     port: 5432
     user: postgres
-    password: kalahkan123
+    password: 123
     dbname: postgres
     sslmode: disable
     schema: 
         listclinics: listclinics
-redis:
-    host: localhost
-    port: 6378
-    user: ""
-    password: ""
 sentry:
     isactive: true
     dsn: https://xxx@sentry.medkomtek.com/22
 server:
     port: 8080
-    issuer: universitasbakrie
+    issuer: hayvee
     env: development
     baseurl: http://localhost:8081/
     redirectpage: http://localhost:8081/
