@@ -1,6 +1,6 @@
 database:
     driver: postgres
-    host: host.docker.internal
+    host: 103.214.112.202
     port: 5434
     user: postgres
     password: Kalahkan

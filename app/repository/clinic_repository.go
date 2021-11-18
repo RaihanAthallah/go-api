@@ -12,6 +12,7 @@ type ClinicRepository interface {
 	Find(id int) (*list.HvClinic, error)
 	FindByCity(city string) ([]list.HvClinic, error)
 	List() ([]list.HvClinic, error)
+	Create(user list.HvClinic) (list.HvClinic, error)
 }
 
 func NewClinicRepository(ar BaseRepository) ClinicRepository {
@@ -19,7 +20,7 @@ func NewClinicRepository(ar BaseRepository) ClinicRepository {
 }
 
 func (r *clinicRepository) Find(id int) (*list.HvClinic, error) {
-	var clinic list.HvClinic
+	var clinic *list.HvClinic
 	var baseDb = r.base
 
 	query := baseDb.GetDB().
@@ -29,7 +30,7 @@ func (r *clinicRepository) Find(id int) (*list.HvClinic, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &clinic, nil
+	return clinic, nil
 }
 
 func (r *clinicRepository) FindByCity(city string) ([]list.HvClinic, error) {
@@ -37,9 +38,9 @@ func (r *clinicRepository) FindByCity(city string) ([]list.HvClinic, error) {
 	var baseDb = r.base
 
 	query := baseDb.GetDB().
-		Where("city ILIKE ?", "%"+city+"%")
+		Where(&list.HvClinic{City: city})
 
-	err := query.First(&clinic).Error
+	err := query.Find(&clinic).Error
 	if err != nil {
 		return nil, err
 	}
@@ -57,4 +58,9 @@ func (r *clinicRepository) List() ([]list.HvClinic, error) {
 		return nil, err
 	}
 	return clinic, nil
+}
+
+func (r *clinicRepository) Create(user list.HvClinic) (list.HvClinic, error) {
+	err := r.base.GetDB().Create(&user).Error
+	return user, err
 }

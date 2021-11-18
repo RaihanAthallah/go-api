@@ -6,9 +6,12 @@ import (
 )
 
 func DoctorRouter(r *gin.Engine, c controller.DoctorController) *gin.Engine {
-	var gr = r.Group("doctor")
+	var gr = r.Group("clinics")
 	{
 		gr.GET("", c.ClinicList)
+		gr.GET("detail/:id", c.ClinicByID)
+		gr.GET("city/:city", c.ClinicByCity)
+		gr.POST("/register", c.Register)
 
 	}
 	return r
