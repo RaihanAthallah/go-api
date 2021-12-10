@@ -3,7 +3,10 @@ package usecase
 import (
 	list "github.com/hayvee-website-development/go-api-hayvee/app/model/entity/listclinics"
 	req "github.com/hayvee-website-development/go-api-hayvee/app/model/request/user"
+	rsp "github.com/hayvee-website-development/go-api-hayvee/app/model/response/doctor"
 	"github.com/hayvee-website-development/go-api-hayvee/app/repository"
+	"github.com/jaswdr/faker"
+	"github.com/jinzhu/copier"
 )
 
 type doctorUsecase struct {
@@ -12,9 +15,9 @@ type doctorUsecase struct {
 }
 
 type DoctorUsecase interface {
-	List() (list []list.HvClinic, err error)
-	FindCity(city string) (list []list.HvClinic, err error)
-	FindID(id int) (list *list.HvClinic, err error)
+	List() (result []interface{}, err error)
+	FindCity(city string) (result []interface{}, err error)
+	FindID(id int) (result interface{}, err error)
 	Create(user req.RegRegister) (interface{}, error)
 }
 
@@ -25,16 +28,49 @@ func NewDoctorUsecase(
 	return &doctorUsecase{br, cr}
 }
 
-func (d *doctorUsecase) List() (list []list.HvClinic, err error) {
-	return d.ClinicRepository.List()
+func (d *doctorUsecase) List() (result []interface{}, err error) {
+	faker := faker.New()
+	p := faker.Person()
+	image := p.Image()
+
+	listalldataclinics, err := d.ClinicRepository.List()
+	for _, dataclinics := range listalldataclinics {
+		responselistclinics := rsp.ListDoctor{}
+		copier.Copy(&responselistclinics, &dataclinics)
+		responselistclinics.Avatar = image.Name()
+
+		result = append(result, responselistclinics)
+	}
+	return result, err
 }
 
-func (d *doctorUsecase) FindCity(city string) (list []list.HvClinic, err error) {
-	return d.ClinicRepository.FindByCity(city)
+func (d *doctorUsecase) FindCity(city string) (result []interface{}, err error) {
+	faker := faker.New()
+	p := faker.Person()
+	image := p.Image()
+
+	listalldataclinics, err := d.ClinicRepository.FindByCity(city)
+	for _, dataclinics := range listalldataclinics {
+		responselistclinics := rsp.ListDoctor{}
+		copier.Copy(&responselistclinics, &dataclinics)
+		responselistclinics.Avatar = image.Name()
+
+		result = append(result, responselistclinics)
+	}
+	return result, err
 }
 
-func (d *doctorUsecase) FindID(id int) (list *list.HvClinic, err error) {
-	return d.ClinicRepository.Find(id)
+func (d *doctorUsecase) FindID(id int) (result interface{}, err error) {
+	faker := faker.New()
+	p := faker.Person()
+	image := p.Image()
+
+	listalldataclinics, err := d.ClinicRepository.Find(id)
+	responselistclinics := rsp.ListDoctor{}
+	copier.Copy(&responselistclinics, &listalldataclinics)
+	responselistclinics.Avatar = image.Name()
+
+	return responselistclinics, err
 }
 
 func (uu *doctorUsecase) Create(input req.RegRegister) (interface{}, error) {

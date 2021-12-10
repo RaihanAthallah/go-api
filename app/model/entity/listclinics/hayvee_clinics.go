@@ -11,6 +11,7 @@ type HvClinic struct {
 	Contact     string `json:"contact"`
 	Province    string `json:"province"`
 	PostalCode  string `json:"postal_code"`
+	Avatar      string `json:"avatar"`
 }
 
 func (HvClinic) TableName() string {
