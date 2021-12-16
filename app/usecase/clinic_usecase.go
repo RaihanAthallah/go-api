@@ -61,14 +61,10 @@ func (d *doctorUsecase) FindCity(city string) (result []interface{}, err error) 
 }
 
 func (d *doctorUsecase) FindID(id int) (result interface{}, err error) {
-	faker := faker.New()
-	p := faker.Person()
-	image := p.Image()
 
 	listalldataclinics, err := d.ClinicRepository.Find(id)
 	responselistclinics := rsp.ListDoctor{}
 	copier.Copy(&responselistclinics, &listalldataclinics)
-	responselistclinics.Avatar = image.Name()
 
 	return responselistclinics, err
 }
