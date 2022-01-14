@@ -26,7 +26,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - 5431:5434
+      - 5430:5434
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=default

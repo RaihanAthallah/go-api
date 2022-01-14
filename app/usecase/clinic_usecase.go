@@ -5,7 +5,6 @@ import (
 	req "github.com/hayvee-website-development/go-api-hayvee/app/model/request/user"
 	rsp "github.com/hayvee-website-development/go-api-hayvee/app/model/response/doctor"
 	"github.com/hayvee-website-development/go-api-hayvee/app/repository"
-	"github.com/jaswdr/faker"
 	"github.com/jinzhu/copier"
 )
 
@@ -29,15 +28,11 @@ func NewDoctorUsecase(
 }
 
 func (d *doctorUsecase) List() (result []interface{}, err error) {
-	faker := faker.New()
-	p := faker.Person()
-	image := p.Image()
 
 	listalldataclinics, err := d.ClinicRepository.List()
 	for _, dataclinics := range listalldataclinics {
 		responselistclinics := rsp.ListDoctor{}
 		copier.Copy(&responselistclinics, &dataclinics)
-		responselistclinics.Avatar = image.Name()
 
 		result = append(result, responselistclinics)
 	}
@@ -45,15 +40,11 @@ func (d *doctorUsecase) List() (result []interface{}, err error) {
 }
 
 func (d *doctorUsecase) FindCity(city string) (result []interface{}, err error) {
-	faker := faker.New()
-	p := faker.Person()
-	image := p.Image()
 
 	listalldataclinics, err := d.ClinicRepository.FindByCity(city)
 	for _, dataclinics := range listalldataclinics {
 		responselistclinics := rsp.ListDoctor{}
 		copier.Copy(&responselistclinics, &dataclinics)
-		responselistclinics.Avatar = image.Name()
 
 		result = append(result, responselistclinics)
 	}
@@ -79,6 +70,7 @@ func (uu *doctorUsecase) Create(input req.RegRegister) (interface{}, error) {
 		Contact:     input.Contact,
 		Province:    input.Province,
 		PostalCode:  input.PostalCode,
+		Avatar:	     input.Avatar,
 	}
 	rUser, err := uu.ClinicRepository.Create(user)
 	if err != nil {
