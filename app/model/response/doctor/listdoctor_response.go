@@ -1,4 +1,4 @@
-package doctor
+package response
 
 type ListDoctor struct {
 	ID          int    `json:"id"`

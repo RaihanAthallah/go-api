@@ -12,6 +12,7 @@ type config struct {
 	AuthKey  KeyAuth
 	Sentry   Sentry
 	Server   Server
+	Auth     Auth
 }
 
 type DatabaseConfig struct {
@@ -52,6 +53,12 @@ type Server struct {
 	Env          string
 	BaseUrl      string
 	RedirectPage string
+}
+
+type Auth struct {
+	CmsSecret         string
+	ApplicationIssuer string
+	ExpiredTimeHour   int
 }
 
 var C config

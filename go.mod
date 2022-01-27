@@ -16,6 +16,7 @@ require (
 	github.com/jinzhu/gorm v1.9.16
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/viper v1.9.0
+	github.com/thanhpk/randstr v1.0.4
 	go.uber.org/zap v1.19.1
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gorm.io/driver/postgres v1.2.1
