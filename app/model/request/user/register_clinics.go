@@ -12,6 +12,7 @@ type RegRegister struct {
 	Contact     string `json:"contact" form:"contact"`
 	Province    string `json:"province" form:"province"`
 	PostalCode  string `json:"postal_code" form:"postal_code"`
+	Avatar 	    string `json:"avatar" form:"avatar"`
 }
 
 func (reg RegRegister) Validate() error {
@@ -23,5 +24,6 @@ func (reg RegRegister) Validate() error {
 		validation.Field(&reg.Contact, validation.Required, validation.Length(11, 14)),
 		validation.Field(&reg.Province, validation.Required, validation.Length(3, 20)),
 		validation.Field(&reg.PostalCode, validation.Required, validation.Length(4, 10)),
+		validation.Field(&reg.Avatar, validation.Required, validation.Length(4, 100)),
 	)
 }
