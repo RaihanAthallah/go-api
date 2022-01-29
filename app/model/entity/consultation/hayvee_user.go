@@ -3,7 +3,7 @@ package entity
 import "github.com/hayvee-website-development/go-api-hayvee/config"
 
 type HvUser struct {
-	IDUser       int    `json:"iduser"`
+	IDUser       int    `gorm:"primary_key:auto_increment;not_null;column:iduser"`
 	Username     string `json:"username"`
 	Password     string `json:"password"`
 	Email        string `json:"email"`
@@ -12,5 +12,5 @@ type HvUser struct {
 }
 
 func (HvUser) TableName() string {
-	return config.C.Database.Schema.ListClinics + ".hayvee_clinics"
+	return config.C.Database.Schema.User + ".hayvee_user"
 }

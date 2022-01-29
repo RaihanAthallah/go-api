@@ -8,6 +8,7 @@ database:
     sslmode: disable
     schema: 
         listclinics: listclinics
+        user: user
 sentry:
     isactive: true
     dsn: https://xxx@sentry.medkomtek.com/22
@@ -15,5 +16,5 @@ server:
     port: 8080
     issuer: hayvee
     env: development
-    baseurl: http://localhost:8081/
-    redirectpage: http://localhost:8081/
+    baseurl: http://localhost:8080/
+    redirectpage: http://localhost:8080/

@@ -1,8 +1,7 @@
 package repository
 
 import (
-	"time"
-
+	"github.com/golang-module/carbon/v2"
 	entity "github.com/hayvee-website-development/go-api-hayvee/app/model/entity/consultation"
 )
 
@@ -56,7 +55,7 @@ func (r *userAccessRepository) ValidTokenWithID(iduser int, token string) bool {
 	return true
 }
 func (r *userAccessRepository) Create(ua entity.HvUserAccess) error {
-	ua.LastUpdate = time.Now().Format("2017.09.07 17:06:06")
+	ua.LastUpdate = carbon.Now().ToDateTimeString()
 	err := r.base.GetDB().Create(&ua).Error
 	return err
 }

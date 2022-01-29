@@ -123,7 +123,7 @@ func (uu *userUsercase) Create(input req.RegRegisterUser) (interface{}, error) {
 	superadmin := entity.HvUser{
 		Email:        input.Email,
 		Password:     passwordhashgenerator,
-		IDIdentifier: input.Identifier,
+		IDIdentifier: 4,
 		Salt:         salt,
 	}
 	rSuperAdmin, errrSuperAdmin := uu.UserRepository.Create(superadmin)
@@ -136,13 +136,13 @@ func (uu *userUsercase) Create(input req.RegRegisterUser) (interface{}, error) {
 		Email:        input.Email,
 		Phone:        input.Handphone,
 		Name:         input.Name,
-		IDIdentifier: input.Identifier,
+		IDIdentifier: 4,
 	}
 	rProfileSuperAdmin, _ := uu.UserDataRepository.Create(superadmindata)
 
 	superadminaccess := entity.HvUserAccess{
 		IDUser:       rSuperAdmin.IDUser,
-		IDIdentifier: input.Identifier,
+		IDIdentifier: 4,
 	}
 
 	token := uu.UserAccessUsecase.GenerateToken(superadminaccess)

@@ -63,7 +63,7 @@ func (r *userDataRepository) List() ([]entity.HvUserData, error) {
 func (r *userDataRepository) Update(id int, input map[string]interface{}) error {
 	var user entity.HvUserData
 	err := r.base.GetDB().Model(&user).
-		Where("id_superadmin = ?", id).
+		Where("iduser = ?", id).
 		Updates(&input).Error
 	if err != nil {
 		return err

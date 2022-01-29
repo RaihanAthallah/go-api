@@ -16,3 +16,12 @@ func DoctorRouter(r *gin.Engine, c controller.DoctorController) *gin.Engine {
 	}
 	return r
 }
+
+func LoginRouter(r *gin.Engine, c controller.UserController) *gin.Engine {
+	var gr = r.Group("api")
+	{
+		gr.POST("login", c.LoginEmail)
+		gr.POST("register", c.Register)
+	}
+	return r
+}

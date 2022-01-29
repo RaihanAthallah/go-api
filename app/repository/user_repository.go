@@ -39,8 +39,8 @@ func (r *userRepository) FindByParam(filter map[string]interface{}) (*list.HvUse
 	var user list.HvUser
 	query := r.base.GetDB()
 
-	if filter["username"] != nil {
-		query = query.Where(&list.HvUser{Username: filter["username"].(string)})
+	if filter["email"] != nil {
+		query = query.Where(&list.HvUser{Email: filter["email"].(string)})
 	}
 	err := query.First(&user).Error
 	if err != nil {
@@ -58,7 +58,7 @@ func (r *userRepository) Create(user list.HvUser) (list.HvUser, error) {
 func (r *userRepository) Update(id int, input map[string]interface{}) error {
 	var user list.HvUser
 	err := r.base.GetDB().Model(&user).
-		Where("userid = ?", id).
+		Where("iduser = ?", id).
 		Updates(&input).Error
 	if err != nil {
 		return err

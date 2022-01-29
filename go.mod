@@ -9,6 +9,7 @@ require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/go-redis/redis/v8 v8.11.4
+	github.com/golang-module/carbon/v2 v2.0.1 // indirect
 	github.com/hayvee-website-development/go-entites-hayvee v0.0.0-20211030140408-c8e61c193370
 	github.com/hayvee-website-development/go-library-hayvee v0.0.0-20211030122011-7dde3f699272
 	github.com/jaswdr/faker v1.8.0

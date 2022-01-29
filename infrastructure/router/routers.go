@@ -58,5 +58,6 @@ func Routes(r *gin.Engine, registry registry.Registry) *gin.Engine {
 
 	//append routing here
 	routing = DoctorRouter(routing, registry.NewDoctorController())
+	routing = LoginRouter(routing, registry.NewUserController())
 	return routing
 }

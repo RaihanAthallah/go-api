@@ -6,12 +6,10 @@ import (
 )
 
 type RegRegisterUser struct {
-	Name       string `json:"name" form:"name"`
-	Email      string `json:"email" form:"email"`
-	Password   string `json:"password" form:"password"`
-	Handphone  string `json:"handphone" form:"handphone"`
-	Identifier int    `json:"identifier" form:"identifier"`
-	Specialist string `json:"specialist" form:"specialist"`
+	Name      string `json:"name" form:"name"`
+	Email     string `json:"email" form:"email"`
+	Password  string `json:"password" form:"password"`
+	Handphone string `json:"handphone" form:"handphone"`
 }
 
 func (reg RegRegisterUser) Validate() error {

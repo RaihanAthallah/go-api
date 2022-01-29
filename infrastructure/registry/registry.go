@@ -11,6 +11,7 @@ type registry struct {
 
 type Registry interface {
 	NewDoctorController() controller.DoctorController
+	NewUserController() controller.UserController
 }
 
 func NewRegistry(db *gorm.DB) Registry {
