@@ -41,3 +41,6 @@ Open and edit docker-compose files:
     ```bash
     docker-compose -f docker-compose.yml up --build
     ```
+
+## Postman
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/16666203-5b7a9551-f681-4cbd-91e9-c5c3fba47afa?action=collection%2Ffork&collection-url=entityId%3D16666203-5b7a9551-f681-4cbd-91e9-c5c3fba47afa%26entityType%3Dcollection%26workspaceId%3D6f26d8db-3d9e-4cf5-9765-6349cf991a87)    
