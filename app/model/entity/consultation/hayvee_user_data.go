@@ -8,6 +8,7 @@ type HvUserData struct {
 	Email        string `json:"email"`
 	Phone        string `json:"phone"`
 	Name         string `json:"name"`
+	Umur         int    `json:"umur"`
 }
 
 func (HvUserData) TableName() string {

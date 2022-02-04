@@ -15,6 +15,7 @@ type UserDataRepository interface {
 	List() ([]entity.HvUserData, error)
 	Update(id int, input map[string]interface{}) error
 	FindByParam(filter map[string]interface{}) ([]entity.HvUserData, error)
+	FindByUmur(umur int) ([]entity.HvUserData, error)
 }
 
 func NewUserDataRepository(ar BaseRepository) UserDataRepository {
@@ -30,6 +31,17 @@ func (r *userDataRepository) FindByID(id int) (*entity.HvUserData, error) {
 		return nil, err
 	}
 	return &tr, nil
+}
+
+func (r *userDataRepository) FindByUmur(umur int) ([]entity.HvUserData, error) {
+	var tr []entity.HvUserData
+	err := r.base.GetDB().
+		Where(entity.HvUserData{Umur: umur}).
+		Find(&tr).Error
+	if err != nil {
+		return nil, err
+	}
+	return tr, nil
 }
 
 func (r *userDataRepository) FindAll() ([]entity.HvUserData, error) {
