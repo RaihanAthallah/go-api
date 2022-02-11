@@ -12,6 +12,7 @@ type UserDataRepository interface {
 	FindByID(id int) (*entity.HvUserData, error)
 	FindAll() ([]entity.HvUserData, error)
 	Create(ua entity.HvUserData) (entity.HvUserData, error)
+	CreateIdentity(ua entity.HvUserData, iduser int) (entity.HvUserData, error)
 	List() ([]entity.HvUserData, error)
 	Update(id int, input map[string]interface{}) error
 	FindByParam(filter map[string]interface{}) ([]entity.HvUserData, error)
@@ -56,6 +57,15 @@ func (r *userDataRepository) FindAll() ([]entity.HvUserData, error) {
 
 func (r *userDataRepository) Create(ua entity.HvUserData) (entity.HvUserData, error) {
 	err := r.base.GetDB().Create(&ua).Error
+	return ua, err
+}
+
+func (r *userDataRepository) CreateIdentity(ua entity.HvUserData, iduser int) (entity.HvUserData, error) {
+	err := r.base.GetDB().
+		Where(entity.HvUserData{IDUser: iduser}).
+		Updates(&ua).Error
+
+	ua.IDUser = iduser
 	return ua, err
 }
 

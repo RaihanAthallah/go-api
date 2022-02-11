@@ -20,3 +20,19 @@ func (reg RegRegisterUser) Validate() error {
 		validation.Field(&reg.Handphone, validation.Required, validation.Length(11, 14)),
 	)
 }
+
+type RegRegisterUserIdentity struct {
+	JenisKelamin string `json:"jenis_kelamin" form:"jenis_kelamin"`
+	Umur         int    `json:"umur" form:"umur"`
+	Alamat       string `json:"alamat" form:"alamat"`
+	Kota         string `json:"kota" form:"kota"`
+}
+
+func (reg RegRegisterUserIdentity) Validate() error {
+	return validation.ValidateStruct(&reg,
+		validation.Field(&reg.JenisKelamin, validation.Required),
+		validation.Field(&reg.Umur, validation.Required),
+		validation.Field(&reg.Alamat, validation.Required),
+		validation.Field(&reg.Kota, validation.Required),
+	)
+}

@@ -9,3 +9,7 @@ func (r *registry) NewDoctorController() controller.DoctorController {
 func (r *registry) NewUserController() controller.UserController {
 	return controller.NewUserController(r.NewUserUsercase())
 }
+
+func (r *registry) NewScreeningController() controller.ScreeningController {
+	return controller.NewScreeningController(r.NewScreeningUsecase())
+}

@@ -28,6 +28,7 @@ type UserUsercase interface {
 	VerifyEmail(username string, password string) interface{}
 	IsDuplicateEmail(username string) bool
 	Create(user req.RegRegisterUser) (interface{}, error)
+	CreateIdentity(identity req.RegRegisterUserIdentity, token string) (interface{}, error)
 }
 
 func NewUserUsercase(
@@ -116,6 +117,7 @@ func (uu *userUsercase) IsDuplicateEmail(email string) bool {
 	}
 	return false
 }
+
 func (uu *userUsercase) Create(input req.RegRegisterUser) (interface{}, error) {
 	uu.BaseRepository.BeginTx()
 	salt := randstr.String(32)
@@ -152,4 +154,22 @@ func (uu *userUsercase) Create(input req.RegRegisterUser) (interface{}, error) {
 		return false, err
 	}
 	return resp, err
+}
+
+func (uu *userUsercase) CreateIdentity(identity req.RegRegisterUserIdentity, token string) (interface{}, error) {
+	findiduser, _ := uu.UserAccessRepository.FindIDByToken(token)
+	uu.BaseRepository.BeginTx()
+	useridentity := entity.HvUserData{
+		Umur:         identity.Umur,
+		JenisKelamin: identity.JenisKelamin,
+		Alamat:       identity.Alamat,
+		Kota:         identity.Kota,
+	}
+	createidentity, err := uu.UserDataRepository.CreateIdentity(useridentity, findiduser.IDUser)
+	if err != nil {
+		uu.BaseRepository.RollbackTx()
+		return false, err
+	}
+	return createidentity, err
+
 }

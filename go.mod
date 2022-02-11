@@ -12,7 +12,6 @@ require (
 	github.com/golang-module/carbon/v2 v2.0.1
 	github.com/hayvee-website-development/go-entites-hayvee v0.0.0-20211030140408-c8e61c193370
 	github.com/hayvee-website-development/go-library-hayvee v0.0.0-20211030122011-7dde3f699272
-	github.com/jaswdr/faker v1.8.0
 	github.com/jinzhu/copier v0.3.4
 	github.com/jinzhu/gorm v1.9.16
 	github.com/satori/go.uuid v1.2.0

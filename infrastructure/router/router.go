@@ -22,6 +22,15 @@ func LoginRouter(r *gin.Engine, c controller.UserController) *gin.Engine {
 	{
 		gr.POST("login", c.LoginEmail)
 		gr.POST("register", c.Register)
+		gr.POST("identity", c.CreateIdentity)
+	}
+	return r
+}
+
+func ScreeningRouter(r *gin.Engine, c controller.ScreeningController) *gin.Engine {
+	var gr = r.Group("api")
+	{
+		gr.POST("screening", c.ScreeningAnswer)
 	}
 	return r
 }

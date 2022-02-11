@@ -9,6 +9,7 @@ database:
     schema: 
         listclinics: listclinics
         user: user
+        consultation: consultation
 sentry:
     isactive: true
     dsn: https://xxx@sentry.medkomtek.com/22

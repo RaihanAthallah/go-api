@@ -27,8 +27,9 @@ type DatabaseConfig struct {
 }
 
 type Schema struct {
-	ListClinics string
-	User        string
+	ListClinics  string
+	User         string
+	Consultation string
 }
 
 type Redis struct {

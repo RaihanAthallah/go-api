@@ -15,6 +15,7 @@ type UserAccessRepository interface {
 	Update(id int, token string) error
 	ValidToken(token string) bool
 	ValidTokenWithID(iduser int, token string) bool
+	FindIDByToken(token string) (*entity.HvUserAccess, error)
 }
 
 func NewUserAccessRepository(ar BaseRepository) UserAccessRepository {
@@ -67,4 +68,13 @@ func (r *userAccessRepository) Update(iduser int, token string) error {
 		return err
 	}
 	return nil
+}
+func (r *userAccessRepository) FindIDByToken(token string) (*entity.HvUserAccess, error) {
+	var ua entity.HvUserAccess
+	err := r.base.GetDB().Where("token = ?", token).
+		First(&ua).Error
+	if err != nil {
+		return nil, err
+	}
+	return &ua, nil
 }

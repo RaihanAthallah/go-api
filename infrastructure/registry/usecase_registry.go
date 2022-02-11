@@ -33,3 +33,11 @@ func (r *registry) NewUserAccessUsecase() usecase.UserAccessUsecase {
 		repository.NewUserRepository(repository.NewBaseRepository(r.db)),
 	)
 }
+
+func (r *registry) NewScreeningUsecase() usecase.ScreeningUsecase {
+	return usecase.NewScreeningUsecase(
+		repository.NewBaseRepository(r.db),
+		repository.NewScreeningRepository(repository.NewBaseRepository(r.db)),
+		repository.NewUserAccessRepository(repository.NewBaseRepository(r.db)),
+	)
+}
