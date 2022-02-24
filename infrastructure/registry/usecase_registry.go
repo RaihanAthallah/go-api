@@ -12,3 +12,10 @@ func (r *registry) NewProductUsecase() inventoryusecase.ProductUsecase {
 		inventoryrepository.NewProductRepository(repository.NewBaseRepository(r.db)),
 	)
 }
+
+func (r *registry) NewTrackingUsecase() inventoryusecase.TrackingUsecase {
+	return inventoryusecase.NewTrackingUsecase(
+		repository.NewBaseRepository(r.db),
+		inventoryrepository.NewTrackingRepository(repository.NewBaseRepository(r.db)),
+	)
+}

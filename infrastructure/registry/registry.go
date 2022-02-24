@@ -11,6 +11,7 @@ type registry struct {
 
 type Registry interface {
 	NewProductController() inventorycontroller.ProductController
+	NewTrackingController() inventorycontroller.TrackingController
 }
 
 func NewRegistry(db *gorm.DB) Registry {

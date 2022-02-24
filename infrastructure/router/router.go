@@ -5,7 +5,7 @@ import (
 	inventorycontroller "github.com/inventory-management-tokobejo/go-api/app/controller/inventory"
 )
 
-func InventoryRouter(r *gin.Engine, c inventorycontroller.ProductController) *gin.Engine {
+func ProductRouter(r *gin.Engine, c inventorycontroller.ProductController) *gin.Engine {
 	var gr = r.Group("inventory")
 	{
 		gr.GET("product/detail/id", c.FindByIDProduct)
@@ -14,6 +14,14 @@ func InventoryRouter(r *gin.Engine, c inventorycontroller.ProductController) *gi
 		gr.POST("product/create", c.Create)
 		gr.GET("product/delete/id", c.DeleteByIDProduct)
 		gr.GET("product/delete/sku", c.DeleteBySKU)
+	}
+	return r
+}
+
+func TrackingRouter(r *gin.Engine, c inventorycontroller.TrackingController) *gin.Engine {
+	var gr = r.Group("inventory")
+	{
+		gr.GET("tracking/detail/id", c.FindByID)
 	}
 	return r
 }
