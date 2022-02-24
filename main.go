@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/hayvee-website-development/go-api-hayvee/config"
-	"github.com/hayvee-website-development/go-api-hayvee/infrastructure/io"
-	"github.com/hayvee-website-development/go-api-hayvee/infrastructure/registry"
-	"github.com/hayvee-website-development/go-api-hayvee/infrastructure/router"
+	"github.com/inventory-management-tokobejo/go-api/config"
+	"github.com/inventory-management-tokobejo/go-api/infrastructure/io"
+	"github.com/inventory-management-tokobejo/go-api/infrastructure/registry"
+	"github.com/inventory-management-tokobejo/go-api/infrastructure/router"
 )
 
 func main() {

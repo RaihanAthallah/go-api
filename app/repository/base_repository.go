@@ -3,8 +3,8 @@ package repository
 import (
 	"math"
 
-	"github.com/hayvee-website-development/go-api-hayvee/config"
 	"github.com/hayvee-website-development/go-entites-hayvee/entities/response"
+	"github.com/inventory-management-tokobejo/go-api/config"
 	"gorm.io/gorm"
 )
 

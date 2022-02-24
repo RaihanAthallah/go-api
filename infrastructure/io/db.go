@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/hayvee-website-development/go-api-hayvee/config"
+	"github.com/inventory-management-tokobejo/go-api/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

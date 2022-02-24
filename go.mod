@@ -1,4 +1,4 @@
-module github.com/hayvee-website-development/go-api-hayvee
+module github.com/inventory-management-tokobejo/go-api
 
 go 1.15
 

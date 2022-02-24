@@ -4,12 +4,12 @@ database:
     port: 5434
     user: postgres
     password: Kalahkan
-    dbname: hayvee
+    dbname: invenmanager
     sslmode: disable
     schema: 
-        listclinics: listclinics
-        user: user
-        consultation: consultation
+        inventory: inventory
+        order: order
+        red: red
 sentry:
     isactive: true
     dsn: https://xxx@sentry.medkomtek.com/22

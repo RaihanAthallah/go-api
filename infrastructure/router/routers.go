@@ -6,9 +6,9 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/hayvee-website-development/go-api-hayvee/infrastructure/io"
-	"github.com/hayvee-website-development/go-api-hayvee/infrastructure/registry"
 	"github.com/hayvee-website-development/go-entites-hayvee/entities/response"
+	"github.com/inventory-management-tokobejo/go-api/infrastructure/io"
+	"github.com/inventory-management-tokobejo/go-api/infrastructure/registry"
 	uuid "github.com/satori/go.uuid"
 )
 
@@ -57,8 +57,6 @@ func Routes(r *gin.Engine, registry registry.Registry) *gin.Engine {
 	}))
 
 	//append routing here
-	routing = DoctorRouter(routing, registry.NewDoctorController())
-	routing = LoginRouter(routing, registry.NewUserController())
-	routing = ScreeningRouter(routing, registry.NewScreeningController())
+	routing = InventoryRouter(routing, registry.NewProductController())
 	return routing
 }

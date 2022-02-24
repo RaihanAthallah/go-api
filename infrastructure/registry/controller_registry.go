@@ -1,15 +1,9 @@
 package registry
 
-import "github.com/hayvee-website-development/go-api-hayvee/app/controller"
+import (
+	inventorycontroller "github.com/inventory-management-tokobejo/go-api/app/controller/inventory"
+)
 
-func (r *registry) NewDoctorController() controller.DoctorController {
-	return controller.NewDoctorController(r.NewDoctorUsecase())
-}
-
-func (r *registry) NewUserController() controller.UserController {
-	return controller.NewUserController(r.NewUserUsercase())
-}
-
-func (r *registry) NewScreeningController() controller.ScreeningController {
-	return controller.NewScreeningController(r.NewScreeningUsecase())
+func (r *registry) NewProductController() inventorycontroller.ProductController {
+	return inventorycontroller.NewProductController(r.NewProductUsecase())
 }

@@ -1,7 +1,7 @@
 package registry
 
 import (
-	"github.com/hayvee-website-development/go-api-hayvee/app/controller"
+	inventorycontroller "github.com/inventory-management-tokobejo/go-api/app/controller/inventory"
 	"gorm.io/gorm"
 )
 
@@ -10,9 +10,7 @@ type registry struct {
 }
 
 type Registry interface {
-	NewDoctorController() controller.DoctorController
-	NewUserController() controller.UserController
-	NewScreeningController() controller.ScreeningController
+	NewProductController() inventorycontroller.ProductController
 }
 
 func NewRegistry(db *gorm.DB) Registry {
