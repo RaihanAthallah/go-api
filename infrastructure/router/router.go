@@ -24,6 +24,7 @@ func TrackingRouter(r *gin.Engine, c inventorycontroller.TrackingController) *gi
 		gr.GET("tracking/detail/id", c.FindByID)
 		gr.GET("tracking/detail/id_product", c.FindByIDProduct)
 		gr.GET("tracking/list", c.List)
+		gr.POST("tracking/create", c.Create)
 		gr.GET("tracking/delete/id", c.DeleteByID)
 	}
 	return r
@@ -35,6 +36,7 @@ func VariantRouter(r *gin.Engine, c inventorycontroller.VariantController) *gin.
 		gr.GET("variant/detail/id", c.FindByID)
 		gr.GET("variant/detail/id_product", c.FindByIDProduct)
 		gr.GET("variant/list", c.List)
+		gr.POST("variant/create", c.Create)
 		gr.GET("variant/delete/id", c.DeleteByID)
 	}
 	return r
