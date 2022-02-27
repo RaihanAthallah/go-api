@@ -59,5 +59,6 @@ func Routes(r *gin.Engine, registry registry.Registry) *gin.Engine {
 	//append routing here
 	routing = ProductRouter(routing, registry.NewProductController())
 	routing = TrackingRouter(routing, registry.NewTrackingController())
+	routing = VariantRouter(routing, registry.NewVariantController())
 	return routing
 }

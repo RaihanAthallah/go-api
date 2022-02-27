@@ -22,6 +22,20 @@ func TrackingRouter(r *gin.Engine, c inventorycontroller.TrackingController) *gi
 	var gr = r.Group("inventory")
 	{
 		gr.GET("tracking/detail/id", c.FindByID)
+		gr.GET("tracking/detail/id_product", c.FindByIDProduct)
+		gr.GET("tracking/list", c.List)
+		gr.GET("tracking/delete/id", c.DeleteByID)
+	}
+	return r
+}
+
+func VariantRouter(r *gin.Engine, c inventorycontroller.VariantController) *gin.Engine {
+	var gr = r.Group("inventory")
+	{
+		gr.GET("variant/detail/id", c.FindByID)
+		gr.GET("variant/detail/id_product", c.FindByIDProduct)
+		gr.GET("variant/list", c.List)
+		gr.GET("variant/delete/id", c.DeleteByID)
 	}
 	return r
 }

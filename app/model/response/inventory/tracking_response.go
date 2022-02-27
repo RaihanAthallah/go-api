@@ -1,6 +1,6 @@
 package response
 
-type TrackingResponse struct {
+type ResponseCreatedTracking struct {
 	Id         int    `json:"id"`
 	Id_Product int    `json:"id_product"`
 	Desc       string `json:"desc"`

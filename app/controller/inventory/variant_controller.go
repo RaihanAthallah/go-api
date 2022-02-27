@@ -11,11 +11,11 @@ import (
 	inventoryusecase "github.com/inventory-management-tokobejo/go-api/app/usecase/inventory"
 )
 
-type trackingController struct {
-	TrackingUsecase inventoryusecase.TrackingUsecase
+type variantController struct {
+	VariantUsecase inventoryusecase.VariantUsecase
 }
 
-type TrackingController interface {
+type VariantController interface {
 	FindByID(c *gin.Context)
 	FindByIDProduct(c *gin.Context)
 	List(c *gin.Context)
@@ -23,19 +23,19 @@ type TrackingController interface {
 	DeleteByID(c *gin.Context)
 }
 
-func NewTrackingController(
-	tu inventoryusecase.TrackingUsecase,
-) TrackingController {
-	return &trackingController{
-		tu,
+func NewVariantController(
+	vu inventoryusecase.VariantUsecase,
+) VariantController {
+	return &variantController{
+		vu,
 	}
 }
 
-func (tc *trackingController) FindByID(c *gin.Context) {
+func (vc *variantController) FindByID(c *gin.Context) {
 	paramid, _ := strconv.Atoi(c.Query("id"))
 	requestid, _ := c.Get("RequestID")
 
-	result, err := tc.TrackingUsecase.FindByID(paramid)
+	result, err := vc.VariantUsecase.FindByID(paramid)
 	if err != nil {
 		rsp := response.Response{
 			Meta: response.Meta{
@@ -60,11 +60,11 @@ func (tc *trackingController) FindByID(c *gin.Context) {
 }
 
 
-func (tc *trackingController) FindByIDProduct(c *gin.Context) {
+func (vc *variantController) FindByIDProduct(c *gin.Context) {
 	paramidproduct,_ := strconv.Atoi(c.Query("id_product"))
 	requestid, _ := c.Get("RequestID")
 
-	result, err := tc.TrackingUsecase.FindByIDProduct(paramidproduct)
+	result, err := vc.VariantUsecase.FindByIDProduct(paramidproduct)
 	if err != nil {
 		rsp := response.Response{
 			Meta: response.Meta{
@@ -88,10 +88,10 @@ func (tc *trackingController) FindByIDProduct(c *gin.Context) {
 	)
 }
 
-func (tc *trackingController) List(c *gin.Context) {
+func (vc *variantController) List(c *gin.Context) {
 	requestid, _ := c.Get("RequestID")
 
-	result, err := tc.TrackingUsecase.List()
+	result, err := vc.VariantUsecase.List()
 	if err != nil {
 		rsp := response.Response{
 			Meta: response.Meta{
@@ -115,8 +115,8 @@ func (tc *trackingController) List(c *gin.Context) {
 	)
 }
 
-func (tc *trackingController) Create(c *gin.Context) {
-	var input inventoryrequest.RequestCreatedTracking
+func (vc *variantController) Create(c *gin.Context) {
+	var input inventoryrequest.VariantCreatedRequest
 	requestid, _ := c.Get("RequestID")
 
 	if err := c.ShouldBind(&input); err != nil {
@@ -130,7 +130,7 @@ func (tc *trackingController) Create(c *gin.Context) {
 		return
 	}
 
-	result, err := tc.TrackingUsecase.Create(input)
+	result, err := vc.VariantUsecase.Create(input)
 
 	if err != nil {
 		rsp := response.Response{
@@ -155,11 +155,11 @@ func (tc *trackingController) Create(c *gin.Context) {
 	)
 }
 
-func (tc *trackingController) DeleteByID(c *gin.Context) {
-	paramid, _ := strconv.Atoi(c.Query("id_product"))
+func (vc *variantController) DeleteByID(c *gin.Context) {
+	paramid, _ := strconv.Atoi(c.Query("id"))
 	requestid, _ := c.Get("RequestID")
 
-	result, err := tc.TrackingUsecase.DeleteByID(paramid)
+	result, err := vc.VariantUsecase.DeleteByID(paramid)
 	if err != nil {
 		rsp := response.Response{
 			Meta: response.Meta{

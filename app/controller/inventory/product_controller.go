@@ -33,7 +33,6 @@ func NewProductController(
 }
 
 func (pc *productController) FindByIDProduct(c *gin.Context) {
-	// var input inventoryrequest.RequestCreatedProduct
 	paramid, _ := strconv.Atoi(c.Query("id"))
 	requestid, _ := c.Get("RequestID")
 

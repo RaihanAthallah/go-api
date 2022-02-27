@@ -11,3 +11,7 @@ func (r *registry) NewProductController() inventorycontroller.ProductController 
 func (r *registry) NewTrackingController() inventorycontroller.TrackingController {
 	return inventorycontroller.NewTrackingController(r.NewTrackingUsecase())
 }
+
+func (r *registry) NewVariantController() inventorycontroller.VariantController {
+	return inventorycontroller.NewVariantController(r.NewVariantUsecase())
+}
